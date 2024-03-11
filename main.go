@@ -1,12 +1,17 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/itzcodex24/edu-swipe-api/controllers"
+	"fmt"
+	"github.com/gofiber/fiber/v2"
+	"github.com/itzcodex24/edu-swipe-api/database"
 )
 
 func main() {
-	r := gin.Default()
-	r.GET("/", controllers.Get)
-	r.Run(":8081")
+
+	database.Connect()
+	app := fiber.New()
+
+	if err := app.Listen(":3001"); err != nil {
+		fmt.Errorf("error: %v", err)
+	}
 }
