@@ -1,12 +1,16 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/itzcodex24/edu-swipe-api/controllers"
+	"github.com/gofiber/fiber/v2"
+	"github.com/itzcodex24/edu-swipe-api/database"
 )
 
 func main() {
-	r := gin.Default()
-	r.GET("/", controllers.Get)
-	r.Run(":8081")
+	app := fiber.New()
+
+	if err := app.Listen(":3001"); err != nil {
+		panic("Failed to start the server..")
+	}
+
+	database.Connect()
 }
