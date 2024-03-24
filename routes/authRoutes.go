@@ -7,8 +7,8 @@ import (
 
 func Auth(app *fiber.App) {
 	app.Get("/", controllers.GetHello)
-	app.Post("/login", controllers.Login)
-	app.Post("/logout", controllers.Logout)
-	app.Post("/api/register", controllers.Register)
 	app.Get("/api/user", controllers.User)
+	app.Post("/api/register", controllers.Register)
+	app.Post("/api/login", controllers.Login)
+	app.Post("/api/logout", controllers.Logout)
 }
